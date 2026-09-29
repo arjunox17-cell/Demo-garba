@@ -52,10 +52,10 @@
 
             <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-5">
                 <div>
-                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Admin Username / Email</label>
+                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Admin Email</label>
                     <div class="relative">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><i class="fa-solid fa-user"></i></span>
-                        <input type="text" id="loginEmail" required value="admin@garba.com" class="w-full bg-maroon-900/80 border border-gray-700 rounded-lg pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-saffron-500 transition-colors">
+                        <input type="email" id="loginEmail" required value="arjun@garba.com" class="w-full bg-maroon-900/80 border border-gray-700 rounded-lg pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-saffron-500 transition-colors">
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@
                     <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Password</label>
                     <div class="relative">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><i class="fa-solid fa-lock"></i></span>
-                        <input type="password" id="loginPassword" required value="admin123" class="w-full bg-maroon-900/80 border border-gray-700 rounded-lg pl-10 pr-12 py-3 text-sm text-white focus:outline-none focus:border-saffron-500 transition-colors">
+                        <input type="password" id="loginPassword" required value="garba2026" class="w-full bg-maroon-900/80 border border-gray-700 rounded-lg pl-10 pr-12 py-3 text-sm text-white focus:outline-none focus:border-saffron-500 transition-colors">
                         <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-white">
                             <i id="eyeIcon" class="fa-solid fa-eye"></i>
                         </button>
@@ -71,11 +71,7 @@
                 </div>
 
                 <div class="flex items-center justify-between text-sm">
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="checkbox" id="rememberMe" class="rounded bg-maroon-900 border-gray-700 text-saffron-500 focus:ring-saffron-500">
-                        <span class="text-gray-300 text-xs">Remember me</span>
-                    </label>
-                    <span class="text-xs text-saffron-400 italic">Demo: admin123</span>
+                    <span class="text-xs text-saffron-400 italic">Login: arjun@garba.com / garba2026</span>
                 </div>
 
                 <button type="submit" class="w-full bg-gradient-to-r from-saffron-600 to-saffron-500 text-black font-bold py-3 rounded-lg shadow-lg hover:from-saffron-500 hover:to-saffron-400 transition-all transform active:scale-[0.98]">
@@ -86,7 +82,7 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- MAIN APP WRAPPER (HIDDEN UNTIL LOGIN)      -->
+    <!-- MAIN APP WRAPPER                           -->
     <!-- ========================================== -->
     <div id="appContainer" class="flex h-screen overflow-hidden hidden">
 
@@ -149,7 +145,7 @@
                         <div class="w-8 h-8 rounded-full bg-saffron-500 text-black font-bold flex items-center justify-center text-xs">
                             A
                         </div>
-                        <span class="text-xs font-semibold text-gray-300 hidden sm:inline">Master Admin</span>
+                        <span class="text-xs font-semibold text-gray-300 hidden sm:inline">Arjun (Admin)</span>
                     </div>
                 </div>
             </header>
@@ -159,7 +155,6 @@
 
                 <!-- 1. DASHBOARD TAB -->
                 <section id="tab-dashboard" class="space-y-6">
-                    <!-- Stats Grid -->
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         <div class="bg-maroon-800 border border-maroon-700 p-4 rounded-xl shadow">
                             <div class="text-xs text-gray-400 font-medium">Total Registrations</div>
@@ -190,7 +185,7 @@
                     <!-- Charts Row -->
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div class="lg:col-span-2 bg-maroon-800 border border-maroon-700 p-5 rounded-xl shadow">
-                            <h3 class="text-sm font-bold text-white mb-4"><i class="fa-solid fa-chart-area text-saffron-500 mr-2"></i> Registration Trend (Last 7 Days)</h3>
+                            <h3 class="text-sm font-bold text-white mb-4"><i class="fa-solid fa-chart-area text-saffron-500 mr-2"></i> Registration Trend</h3>
                             <div class="h-64"><canvas id="trendChart"></canvas></div>
                         </div>
                         <div class="bg-maroon-800 border border-maroon-700 p-5 rounded-xl shadow flex flex-col">
@@ -321,7 +316,6 @@
                 <!-- 4. PASSES & QR TAB -->
                 <section id="tab-passes" class="space-y-6 hidden">
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- QR Scanner / Gate Check-in -->
                         <div class="bg-maroon-800 border border-maroon-700 p-5 rounded-xl shadow space-y-4">
                             <h3 class="text-sm font-bold text-white"><i class="fa-solid fa-qrcode text-saffron-500 mr-2"></i> Gate QR Pass Verification</h3>
                             <p class="text-xs text-gray-400">Enter or scan Registration ID to verify validity at the event entrance.</p>
@@ -332,7 +326,6 @@
                             <div id="scanResultBox" class="hidden p-4 rounded-xl border text-center space-y-2"></div>
                         </div>
 
-                        <!-- Passes List Preview -->
                         <div class="lg:col-span-2 bg-maroon-800 border border-maroon-700 p-5 rounded-xl shadow space-y-4">
                             <h3 class="text-sm font-bold text-white"><i class="fa-solid fa-ticket text-saffron-500 mr-2"></i> Generated Digital Passes</h3>
                             <div class="overflow-x-auto max-h-[400px]">
@@ -419,25 +412,6 @@
                                 <label class="block text-gray-300 font-semibold mb-1">Venue Address</label>
                                 <input type="text" id="setAddress" value="Main City Road, Jabalpur, MP" class="w-full bg-maroon-900 border border-gray-700 rounded-lg p-2.5 text-white">
                             </div>
-                            <div>
-                                <label class="block text-gray-300 font-semibold mb-1">Single Pass Fee (₹)</label>
-                                <input type="number" id="setSingleFee" value="300" class="w-full bg-maroon-900 border border-gray-700 rounded-lg p-2.5 text-white">
-                            </div>
-                            <div>
-                                <label class="block text-gray-300 font-semibold mb-1">Couple Pass Fee (₹)</label>
-                                <input type="number" id="setCoupleFee" value="500" class="w-full bg-maroon-900 border border-gray-700 rounded-lg p-2.5 text-white">
-                            </div>
-                            <div>
-                                <label class="block text-gray-300 font-semibold mb-1">Contact Number</label>
-                                <input type="text" id="setContact" value="+91 9876543210" class="w-full bg-maroon-900 border border-gray-700 rounded-lg p-2.5 text-white">
-                            </div>
-                            <div>
-                                <label class="block text-gray-300 font-semibold mb-1">Registration Status</label>
-                                <select id="setRegStatus" class="w-full bg-maroon-900 border border-gray-700 rounded-lg p-2.5 text-white">
-                                    <option value="Open">Open</option>
-                                    <option value="Closed">Closed</option>
-                                </select>
-                            </div>
                             <div class="md:col-span-2 pt-2">
                                 <button type="submit" class="bg-saffron-500 hover:bg-saffron-600 text-black font-bold px-6 py-2.5 rounded-lg transition-all shadow">Save Settings</button>
                             </div>
@@ -450,8 +424,8 @@
                     <div class="bg-maroon-800 border border-maroon-700 p-6 rounded-xl shadow max-w-md mx-auto space-y-4 text-xs">
                         <div class="text-center pb-4 border-b border-maroon-700">
                             <div class="w-16 h-16 rounded-full bg-saffron-500 text-black font-bold text-2xl flex items-center justify-center mx-auto mb-2">A</div>
-                            <h3 class="text-sm font-bold text-white">Master Administrator</h3>
-                            <p class="text-gray-400">admin@garba.com</p>
+                            <h3 class="text-sm font-bold text-white">Arjun (Master Administrator)</h3>
+                            <p class="text-gray-400">arjun@garba.com</p>
                         </div>
                         <form onsubmit="updateAdminPassword(event)" class="space-y-3">
                             <h4 class="font-bold text-saffron-400">Change Admin Password</h4>
@@ -492,10 +466,7 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- MODALS                                     -->
-    <!-- ========================================== -->
-    <!-- View/Edit Registration Modal -->
+    <!-- MODALS -->
     <div id="regModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-maroon-800 border border-maroon-700 rounded-2xl w-full max-w-lg p-6 space-y-4 max-h-[90vh] overflow-y-auto text-xs">
             <div class="flex justify-between items-center border-b border-maroon-700 pb-3">
@@ -512,7 +483,6 @@
         </div>
     </div>
 
-    <!-- Pass View Modal -->
     <div id="passModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-gradient-to-br from-amber-600 via-amber-700 to-amber-900 rounded-2xl w-full max-w-sm p-6 text-black space-y-4 shadow-2xl relative">
             <button onclick="closePassModal()" class="absolute top-4 right-4 text-black hover:text-white text-base"><i class="fa-solid fa-xmark"></i></button>
@@ -530,45 +500,30 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- JAVASCRIPT LOGIC & DEMO DATA               -->
-    <!-- ========================================== -->
+    <!-- SCRIPT WITH LOCAL STORAGE -->
     <script>
-        // Demo Registrations Dataset (15 realistic records)
-        let registrationsData = [
-            { id: "GARBA-0001", name: "Rahul Sharma", mobile: "9876543210", email: "rahul@gmail.com", age: 24, gender: "Male", category: "Single Pass", people: 1, amount: 300, payment: "Paid", status: "Approved", date: "2026-09-25", txId: "TXN1092834" },
-            { id: "GARBA-0002", name: "Priya Verma", mobile: "9123456780", email: "priya@gmail.com", age: 22, gender: "Female", category: "Couple Pass", people: 2, amount: 500, payment: "Pending", status: "Pending", date: "2026-09-26", txId: "-" },
-            { id: "GARBA-0003", name: "Aman Jain", mobile: "9988776655", email: "aman@gmail.com", age: 26, gender: "Male", category: "VIP Pass", people: 1, amount: 1000, payment: "Paid", status: "Approved", date: "2026-09-26", txId: "TXN4938201" },
-            { id: "GARBA-0004", name: "Neha Singh", mobile: "9811223344", email: "neha@gmail.com", age: 23, gender: "Female", category: "Single Pass", people: 1, amount: 300, payment: "Paid", status: "Approved", date: "2026-09-27", txId: "TXN5829102" },
-            { id: "GARBA-0005", name: "Rohit Patel", mobile: "9722334455", email: "rohit@gmail.com", age: 28, gender: "Male", category: "Group Pass", people: 5, amount: 2200, payment: "Pending", status: "Pending", date: "2026-09-27", txId: "-" },
-            { id: "GARBA-0006", name: "Ananya Gupta", mobile: "9633445566", email: "ananya@gmail.com", age: 21, gender: "Female", category: "Couple Pass", people: 2, amount: 500, payment: "Paid", status: "Approved", date: "2026-09-28", txId: "TXN6948201" },
-            { id: "GARBA-0007", name: "Karan Malhotra", mobile: "9544556677", email: "karan@gmail.com", age: 25, gender: "Male", category: "Single Pass", people: 1, amount: 300, payment: "Failed", status: "Rejected", date: "2026-09-28", txId: "TXN7483920" },
-            { id: "GARBA-0008", name: "Simran Kaur", mobile: "9455667788", email: "simran@gmail.com", age: 24, gender: "Female", category: "VIP Pass", people: 1, amount: 1000, payment: "Paid", status: "Approved", date: "2026-09-29", txId: "TXN8392019" },
-            { id: "GARBA-0009", name: "Vikram Rathore", mobile: "9366778899", email: "vikram@gmail.com", age: 30, gender: "Male", category: "Couple Pass", people: 2, amount: 500, payment: "Paid", status: "Approved", date: "2026-09-29", txId: "TXN9201928" },
-            { id: "GARBA-0010", name: "Divya Sen", mobile: "9277889900", email: "divya@gmail.com", age: 22, gender: "Female", category: "Single Pass", people: 1, amount: 300, payment: "Pending", status: "Pending", date: "2026-09-29", txId: "-" },
-            { id: "GARBA-0011", name: "Manish Tiwari", mobile: "9188990011", email: "manish@gmail.com", age: 27, gender: "Male", category: "Group Pass", people: 4, amount: 1800, payment: "Paid", status: "Approved", date: "2026-09-29", txId: "TXN1122334" },
-            { id: "GARBA-0012", name: "Pooja Dubey", mobile: "9099001122", email: "pooja@gmail.com", age: 25, gender: "Female", category: "Single Pass", people: 1, amount: 300, payment: "Paid", status: "Approved", date: "2026-09-29", txId: "TXN2233445" },
-            { id: "GARBA-0013", name: "Siddharth Roy", mobile: "9800112233", email: "siddharth@gmail.com", age: 29, gender: "Male", category: "Couple Pass", people: 2, amount: 500, payment: "Failed", status: "Rejected", date: "2026-09-29", txId: "TXN3344556" },
-            { id: "GARBA-0014", name: "Megha Nambiar", mobile: "9711223344", email: "megha@gmail.com", age: 23, gender: "Female", category: "Single Pass", people: 1, amount: 300, payment: "Paid", status: "Approved", date: "2026-09-29", txId: "TXN4455667" },
-            { id: "GARBA-0015", name: "Alok Mishra", mobile: "9622334455", email: "alok@gmail.com", age: 26, gender: "Male", category: "VIP Pass", people: 1, amount: 1000, payment: "Pending", status: "Pending", date: "2026-09-29", txId: "-" }
-        ];
+        // Load data from LocalStorage or start with empty list
+        let registrationsData = JSON.parse(localStorage.getItem('garba_registrations')) || [];
+
+        function saveToStorage() {
+            localStorage.setItem('garba_registrations', JSON.stringify(registrationsData));
+        }
 
         let currentSelectedRegId = null;
         let trendChartInstance = null;
         let paymentPieInstance = null;
         let categoryChartInstance = null;
 
-        // AUTHENTICATION
         function handleLogin(e) {
             e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const pass = document.getElementById('loginPassword').value;
-            if(email && pass) {
+            const email = document.getElementById('loginEmail').value.trim();
+            const pass = document.getElementById('loginPassword').value.trim();
+            if(email === 'arjun@garba.com' && pass === 'garba2026') {
                 document.getElementById('loginScreen').classList.add('hidden');
                 document.getElementById('appContainer').classList.remove('hidden');
                 initDashboard();
             } else {
-                alert('Please enter valid credentials.');
+                alert('Invalid Email or Password! (Use arjun@garba.com / garba2026)');
             }
         }
 
@@ -589,13 +544,10 @@
             }
         }
 
-        // TABS NAVIGATION
         function switchTab(tabId) {
-            // Hide all sections
             document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
             document.getElementById('tab-' + tabId).classList.remove('hidden');
 
-            // Update Desktop Sidebar buttons
             document.querySelectorAll('.sidebar-btn').forEach(btn => {
                 if(btn.dataset.tab === tabId) {
                     btn.className = 'sidebar-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all bg-saffron-500 text-black shadow-lg';
@@ -604,7 +556,6 @@
                 }
             });
 
-            // Update Mobile Bottom buttons
             document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
                 if(btn.dataset.tab === tabId) {
                     btn.className = 'mobile-nav-btn flex flex-col items-center text-saffron-500';
@@ -613,7 +564,6 @@
                 }
             });
 
-            // Set Title
             const titles = {
                 dashboard: 'Dashboard Overview',
                 registrations: 'Participant Registrations Management',
@@ -625,7 +575,6 @@
             };
             document.getElementById('pageTitle').innerText = titles[tabId] || 'Admin Portal';
 
-            // Refresh specific tab data
             if(tabId === 'dashboard') initDashboard();
             if(tabId === 'registrations') renderRegistrationsTable(registrationsData);
             if(tabId === 'payments') renderPaymentsTable();
@@ -633,7 +582,6 @@
             if(tabId === 'reports') initReports();
         }
 
-        // DASHBOARD INITIALIZATION
         function initDashboard() {
             const total = registrationsData.length;
             const paid = registrationsData.filter(r => r.payment === 'Paid').length;
@@ -649,34 +597,35 @@
             document.getElementById('statCollection').innerText = '₹' + collection.toLocaleString();
             document.getElementById('statToday').innerText = todayCount;
 
-            // Recent table (top 5)
             const recentBody = document.getElementById('recentTableBody');
-            recentBody.innerHTML = registrationsData.slice(0, 5).map(r => `
-                <tr class="hover:bg-maroon-700/30">
-                    <td class="p-3 font-mono font-bold text-saffron-400">${r.id}</td>
-                    <td class="p-3 font-medium text-white">${r.name}</td>
-                    <td class="p-3 text-gray-300">${r.category}</td>
-                    <td class="p-3 font-semibold text-white">₹${r.amount}</td>
-                    <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${r.payment==='Paid'?'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30':'bg-amber-500/20 text-amber-400 border border-amber-500/30'}">${r.payment}</span></td>
-                    <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${r.status==='Approved'?'bg-emerald-500/20 text-emerald-400':'bg-red-500/20 text-red-400'}">${r.status}</span></td>
-                </tr>
-            `).join('');
+            if(registrationsData.length === 0) {
+                recentBody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-gray-400">No registrations yet. Click 'Add Registration' to start.</td></tr>`;
+            } else {
+                recentBody.innerHTML = registrationsData.slice(0, 5).map(r => `
+                    <tr class="hover:bg-maroon-700/30">
+                        <td class="p-3 font-mono font-bold text-saffron-400">${r.id}</td>
+                        <td class="p-3 font-medium text-white">${r.name}</td>
+                        <td class="p-3 text-gray-300">${r.category}</td>
+                        <td class="p-3 font-semibold text-white">₹${r.amount}</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${r.payment==='Paid'?'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30':'bg-amber-500/20 text-amber-400 border border-amber-500/30'}">${r.payment}</span></td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${r.status==='Approved'?'bg-emerald-500/20 text-emerald-400':'bg-red-500/20 text-red-400'}">${r.status}</span></td>
+                    </tr>
+                `).join('');
+            }
 
-            // Render Charts
             renderCharts(paid, pending, total - paid - pending);
         }
 
         function renderCharts(paid, pending, other) {
-            // Trend Chart
             const ctxTrend = document.getElementById('trendChart').getContext('2d');
             if(trendChartInstance) trendChartInstance.destroy();
             trendChartInstance = new Chart(ctxTrend, {
                 type: 'line',
                 data: {
-                    labels: ['Sep 23', 'Sep 24', 'Sep 25', 'Sep 26', 'Sep 27', 'Sep 28', 'Sep 29'],
+                    labels: ['Sep 25', 'Sep 26', 'Sep 27', 'Sep 28', 'Sep 29'],
                     datasets: [{
                         label: 'Registrations',
-                        data: [1, 2, 4, 3, 5, 4, 6],
+                        data: [0, 0, 0, 0, registrationsData.length],
                         borderColor: '#F59E0B',
                         backgroundColor: 'rgba(245, 158, 11, 0.1)',
                         fill: true,
@@ -694,7 +643,6 @@
                 }
             });
 
-            // Pie Chart
             const ctxPie = document.getElementById('paymentPieChart').getContext('2d');
             if(paymentPieInstance) paymentPieInstance.destroy();
             paymentPieInstance = new Chart(ctxPie, {
@@ -717,11 +665,10 @@
             });
         }
 
-        // REGISTRATIONS TABLE & FILTERS
         function renderRegistrationsTable(data) {
             const tbody = document.getElementById('registrationsTableBody');
             if(data.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="9" class="p-6 text-center text-gray-400">No registrations found.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="9" class="p-6 text-center text-gray-400">No registrations found. Click 'Add Registration' above.</td></tr>`;
                 return;
             }
             tbody.innerHTML = data.map(r => `
@@ -757,7 +704,6 @@
             renderRegistrationsTable(filtered);
         }
 
-        // REGISTRATION MODAL
         function openRegModal(id) {
             currentSelectedRegId = id;
             const r = registrationsData.find(item => item.id === id);
@@ -769,13 +715,11 @@
                     <div><span class="text-gray-400 block text-[10px]">Full Name</span><strong class="text-white">${r.name}</strong></div>
                     <div><span class="text-gray-400 block text-[10px]">Mobile Number</span><strong class="text-white">${r.mobile}</strong></div>
                     <div><span class="text-gray-400 block text-[10px]">Email Address</span><strong class="text-white">${r.email}</strong></div>
-                    <div><span class="text-gray-400 block text-[10px]">Age / Gender</span><strong class="text-white">${r.age} yrs / ${r.gender}</strong></div>
                     <div><span class="text-gray-400 block text-[10px]">Pass Category</span><strong class="text-saffron-400">${r.category}</strong></div>
                     <div><span class="text-gray-400 block text-[10px]">Number of People</span><strong class="text-white">${r.people}</strong></div>
                     <div><span class="text-gray-400 block text-[10px]">Total Amount</span><strong class="text-white">₹${r.amount}</strong></div>
                     <div><span class="text-gray-400 block text-[10px]">Transaction ID</span><strong class="text-white">${r.txId}</strong></div>
                     <div><span class="text-gray-400 block text-[10px]">Payment Status</span><strong class="${r.payment==='Paid'?'text-emerald-400':'text-amber-400'}">${r.payment}</strong></div>
-                    <div><span class="text-gray-400 block text-[10px]">Registration Status</span><strong class="${r.status==='Approved'?'text-emerald-400':'text-amber-400'}">${r.status}</strong></div>
                 </div>
             `;
             document.getElementById('regModal').classList.remove('hidden');
@@ -798,6 +742,7 @@
                 registrationsData = registrationsData.filter(item => item.id !== currentSelectedRegId);
             }
 
+            saveToStorage();
             closeRegModal();
             renderRegistrationsTable(registrationsData);
             initDashboard();
@@ -812,16 +757,17 @@
 
             const newId = 'GARBA-00' + (registrationsData.length + 1);
             registrationsData.unshift({
-                id: newId, name: name, mobile: mobile, email: name.toLowerCase().replace(' ','') + '@gmail.com',
+                id: newId, name: name, mobile: mobile || '9876543210', email: name.toLowerCase().replace(/\s+/g,'') + '@gmail.com',
                 age: 24, gender: "Unspecified", category: category, people: category==='Couple Pass'?2:1,
                 amount: amount, payment: "Paid", status: "Approved", date: "2026-09-29", txId: "TXN" + Math.floor(1000000 + Math.random() * 9000000)
             });
+
+            saveToStorage();
             renderRegistrationsTable(registrationsData);
             initDashboard();
             alert(`Registration created successfully with ID: ${newId}`);
         }
 
-        // PAYMENTS TAB
         function renderPaymentsTable() {
             const totalPaid = registrationsData.filter(r => r.payment === 'Paid').reduce((a,c) => a + c.amount, 0);
             const totalPending = registrationsData.filter(r => r.payment === 'Pending').reduce((a,c) => a + c.amount, 0);
@@ -834,6 +780,10 @@
             document.getElementById('payTotalCollection').innerText = '₹' + totalCollection.toLocaleString();
 
             const tbody = document.getElementById('paymentsTableBody');
+            if(registrationsData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-gray-400">No payment records found.</td></tr>`;
+                return;
+            }
             tbody.innerHTML = registrationsData.map(r => `
                 <tr class="hover:bg-maroon-700/30">
                     <td class="p-3 font-mono font-bold text-saffron-400">${r.id}</td>
@@ -856,15 +806,19 @@
                 r.payment = 'Paid';
                 r.status = 'Approved';
                 r.txId = 'TXN' + Math.floor(1000000 + Math.random() * 9000000);
+                saveToStorage();
                 renderPaymentsTable();
                 initDashboard();
             }
         }
 
-        // PASSES & QR SCANNER
         function renderPassesTable() {
             const approved = registrationsData.filter(r => r.status === 'Approved');
             const tbody = document.getElementById('passesTableBody');
+            if(approved.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-400">No approved passes available.</td></tr>`;
+                return;
+            }
             tbody.innerHTML = approved.map(r => `
                 <tr class="hover:bg-maroon-700/30">
                     <td class="p-3 font-mono font-bold text-saffron-400">${r.id}</td>
@@ -916,7 +870,6 @@
             document.getElementById('passModal').classList.add('hidden');
         }
 
-        // REPORTS
         function initReports() {
             const total = registrationsData.length;
             const paidCount = registrationsData.filter(r => r.payment === 'Paid').length;
@@ -971,7 +924,6 @@
             a.click();
         }
 
-        // SETTINGS & PROFILE
         function saveSettings(e) {
             e.preventDefault();
             alert('Event settings updated successfully!');
